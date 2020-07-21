@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package br.com.Space.telas;
-
 import br.com.Space.dal.ModuloDeConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -83,7 +82,7 @@ public class Pedidos extends javax.swing.JInternalFrame {
 
     public void pesquisar_os() {
         String num_os = JOptionPane.showInputDialog("Pesquisar número da OS");
-        String sql = "select * from pedidos where os="+ num_os;
+        String sql = "select * from pedidos where os=" + num_os;
         //select * from tbos where data_os between '2019-10-29' and '2020-02-04';
 
         try {
@@ -113,8 +112,8 @@ public class Pedidos extends javax.swing.JInternalFrame {
         }
     }
 
-    private void alterar_os() {
-        String sql = " update pedidos set sabor=?,tamanho=?,quantidade=?,localentrega=?,complemento=?,observacao=?,valor=? where os=?";
+    private void alterarPedidos() {
+        String sql = "update pedidos set sabor=?,tamanho=?,quantidade=?,localentrega=?,complemento=?,observacao=?,valor=? where os=?";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, cboSabor.getSelectedItem().toString());
@@ -124,7 +123,7 @@ public class Pedidos extends javax.swing.JInternalFrame {
             pst.setString(5, txtComplemento.getText());
             pst.setString(6, txtObs.getText());
             pst.setString(7, txtValor.getText().replace(",", "."));
-            pst.setString(8, txtCliId.getText());
+            pst.setString(8, txtOs.getText());
 
             if ((txtCliId.getText().isEmpty()) || (txtLocal.getText().isEmpty()) || (txtValor.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campo obrigatorios");
@@ -132,12 +131,17 @@ public class Pedidos extends javax.swing.JInternalFrame {
             } else {
                 int alterado = pst.executeUpdate();
                 if (alterado > 0) {
-                    JOptionPane.showMessageDialog(null, "Alteradocom sucesso");
+                    JOptionPane.showMessageDialog(null, "Alterado com sucesso");
                     txtCliId.setText(null);
                     txtComplemento.setText(null);
                     txtLocal.setText(null);
                     txtObs.setText(null);
                     txtValor.setText(null);
+                    btsAdicionar.setEnabled(true);
+                    txtCliPesquisar.setEnabled(true);
+                    tblClientes.setVisible(true);
+
+                    //habilitar botoes
                     btsAdicionar.setEnabled(true);
                     txtCliPesquisar.setEnabled(true);
                     tblClientes.setVisible(true);
@@ -512,7 +516,7 @@ public class Pedidos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        alterar_os();
+        alterarPedidos();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

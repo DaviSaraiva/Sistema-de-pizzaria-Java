@@ -271,7 +271,7 @@ public class TelaPrincipalSpace extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenuItem MenCadCli;
-    private javax.swing.JMenuItem MenCadFun;
+    javax.swing.JMenuItem MenCadFun;
     private javax.swing.JMenu cadastro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;

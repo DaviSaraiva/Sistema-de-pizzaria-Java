@@ -25,8 +25,9 @@ public class LoginSpace extends javax.swing.JFrame {
 
             if (rs.next()) {
                 String perfil = rs.getString(6);
+                
                 if (perfil.equals("admin")) {
-                    TelaPrincipalSpace principal = new TelaPrincipalSpace();
+                    TelaPrincipalSpace principal = new TelaPrincipalSpace();           
                     principal.setVisible(true);
                     this.dispose();
                 } else {
